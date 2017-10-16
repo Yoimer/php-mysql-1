@@ -31,4 +31,18 @@
 	echo PROJECT_PATH . "<br />";
 	echo PUBLIC_PATH  . "<br />";
 	echo SHARED_PATH  . "<br />";*/
+	
+	/*
+	<?php
+	// Values are always string when retrieving from super global variables
+	
+	$page = $_GET['page'];
+	echo gettype($page);
+	// 'string'
+
+	$page_as_int = (int) $_GET['page']; // doing casting to convert string into int
+	echo gettype($page_as_int);
+	// integer
+	?>
+	*/
 ?>
