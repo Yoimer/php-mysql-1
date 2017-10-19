@@ -15,4 +15,8 @@
 		return rawurldecode($string);
 	}
 
+	function h($string="") {
+		return htmlspecialchars($string);
+	}
+
 ?>

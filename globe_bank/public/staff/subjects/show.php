@@ -3,7 +3,7 @@
 <?php
 
 $id = isset($_GET['id']) ? $_GET['id'] : 'DEFAULT VALUE';
-echo $id . "<br />";
+echo htmlspecialchars($id) . "<br />";
 
 ?>
 
