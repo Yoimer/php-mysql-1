@@ -23,15 +23,15 @@ elseif ($test == 'redirect')
 
 ?>
 
-<?php $page_title = 'Create Subject'; ?>
+<?php $page_title = 'Edit Subject'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
 
   <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a>
 
-  <div class="subject new">
-    <h1>Create Subject</h1>
+  <div class="subject edit">
+    <h1>Edit Subject</h1>
 
     <form action="" method="post">
       <dl> <!--data list -->
@@ -54,7 +54,7 @@ elseif ($test == 'redirect')
         </dd>
       </dl>
       <div id="operations">
-        <input type="submit" value="Create Subject" />
+        <input type="submit" value="Edit Subject" />
       </div>
     </form>
 
