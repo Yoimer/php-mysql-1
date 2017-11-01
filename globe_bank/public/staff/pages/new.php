@@ -2,11 +2,6 @@
 
 require_once('../../../private/initialize.php');
 
-/*if(!isset($_GET['id'])) {
-	redirect_to(url_for('/staff/pages/index.php'));
-}
-
-$id = $_GET['id'];*/
 $menu_name = '';
 $position = '';
 $visible = '';
@@ -14,7 +9,9 @@ $visible = '';
 if (is_post_request())
 {
 
-	$menu_name = isset($_POST['menu_name']) ? $_POST['menu_name'] : 'DEFAULT VALUE';
+	// Handle form values sent by new.php
+
+  $menu_name = isset($_POST['menu_name']) ? $_POST['menu_name'] : 'DEFAULT VALUE';
 
 	$position = isset($_POST['position']) ? $_POST['position'] : 'DEFAULT VALUE';
 
@@ -41,13 +38,13 @@ if (is_post_request())
     <form action="<?php echo url_for('/staff/pages/new.php'); ?>" method="post">
       <dl> <!--data list -->
         <dt>Menu Name</dt> <!-- data term -->
-        <dd><input type="text" name="menu_name" value="<?php echo $menu_name; ?>" /></dd> <!-- data definition -->
+        <dd><input type="text" name="menu_name" value="<?php echo h($menu_name); ?>" /></dd> <!-- data definition -->
       </dl>
       <dl>
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
+            <option value="1"<?php if($position == "1") { echo " selected";} ?>>1</option>
           </select>
         </dd>
       </dl>
@@ -55,7 +52,7 @@ if (is_post_request())
         <dt>Visible</dt>
         <dd>
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" />
+          <input type="checkbox" name="visible" value="1"<?php if($visible == 1) {echo " checked";}?> />
         </dd>
       </dl>
       <div id="operations">
