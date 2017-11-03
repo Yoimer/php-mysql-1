@@ -1,0 +1,31 @@
+CREATE TABLE subjects (
+  id INT(11) NOT NULL AUTO_INCREMENT, 
+  menu_name VARCHAR(255),
+  position INT(3),
+  visible TINYINT(1),
+  PRIMARY KEY (id)
+);
+
+
+// primary key is going to be an int
+// it can be a large number, it can have 11 different characters in the numbers
+// NOT NULL means it can never be empty, it always has to have a value
+// AUTO INCREMENT always increments the id value for us.
+id INT(11) NOT NULL AUTO_INCREMENT,
+
+// it is going to be a string variable length characters
+// VARCHAR means
+// it can have up to 255 characters in there
+// for something longer, mysql has a type called TEXT.
+menu_name VARCHAR(255),
+
+// it is going to be an integer
+// it needs to reserve only 3 places for it
+position INT(3),
+
+// it is going to be a boolen, the convention is TINYINT
+visible TINYINT(1),
+
+// special option for this table ought to be id
+PRIMARY KEY(id)
+
