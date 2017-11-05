@@ -15,7 +15,7 @@
         global $db;
 
         $sql = "SELECT * FROM pages ";
-        $sql .= "ORDER BY position ASC";
+        $sql .= "ORDER BY subject_id ASC, position ASC";
         //echo $sql;
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
