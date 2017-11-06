@@ -13,10 +13,9 @@ if (is_post_request())
 
 	$visible = isset($_POST['visible']) ? $_POST['visible'] : 'DEFAULT VALUE';
 
-	echo "Form parameters<br />";
-	echo "Menu name: " . $menu_name . "<br />";
-	echo "Position: " . $position . "<br />";
-	echo "Visible: " . $visible . "<br />";
+    $result = insert_subject($menu_name, $position, $visible);
+    $new_id = mysqli_insert_id($db);
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
 }
 else
 {
