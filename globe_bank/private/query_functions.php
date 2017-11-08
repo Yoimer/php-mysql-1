@@ -23,17 +23,6 @@
         return $subject; // returns an assoc. array
     }
 
-    function find_all_pages() {
-        global $db;
-
-        $sql = "SELECT * FROM pages ";
-        $sql .= "ORDER BY subject_id ASC, position ASC";
-        //echo $sql;
-        $result = mysqli_query($db, $sql);
-        confirm_result_set($result);
-        return $result;
-    }
-
     function insert_subject($menu_name, $position, $visible) {
         global $db;
 
@@ -59,4 +48,38 @@
 
     }
 
+    function update_subject($subject) {
+        global $db;
+
+        $sql = "UPDATE subjects SET ";
+        $sql .= "menu_name='" . $subject['menu_name'] . "', "; // space is not strictly neccesary, but I'll use it anyway.
+        $sql .= "position='" . $subject['position'] . "', "; // space is not strictly neccesary, but I'll use it anyway.
+        $sql .= "visible='" . $subject['visible'] . "' "; // space is not strictly neccesary, but I'll use it anyway.
+        $sql .= "WHERE id ='" . $subject['id'] . "' ";
+        $sql .= "LIMIT 1";                                // not strictly neccesary. It won't change a bunch of objects 
+                                                   // if a mistake happends in the "way". It is a extra
+                                                   // safety measure.
+        $result = mysqli_query($db, $sql);
+        // For update statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // UPDATE failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+
+    }
+
+    function find_all_pages() {
+        global $db;
+
+        $sql = "SELECT * FROM pages ";
+        $sql .= "ORDER BY subject_id ASC, position ASC";
+        //echo $sql;
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result;
+    }
 ?>
