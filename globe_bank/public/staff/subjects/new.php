@@ -2,24 +2,12 @@
 
 require_once('../../../private/initialize.php');
 
-//$test = $_GET['test'] ?? '';
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set) + 1;
+mysqli_free_result($subject_set);
 
-$test = isset($_GET['test']) ? $_GET['test'] : 'DEFAULT VALUE';
-
-/*if ($test == '404')
-{
-	error_404();
-}
-
-elseif ($test == '500')
-{
-	error_500();
-}
-
-elseif ($test == 'redirect')
-{
-	redirect_to(url_for('/staff/subjects/index.php'));
-}*/
+$subject = [];
+$subject ["position"] = $subject_count;
 
 ?>
 
@@ -41,8 +29,19 @@ elseif ($test == 'redirect')
       <dl>
         <dt>Position</dt>
         <dd>
-          <select name="position">
+          <!-- <select name="position">
             <option value="1">1</option>
+          </select> -->
+          <select name="position">
+          <?php
+            for($i=1; $i <= $subject_count; $i++) {
+              echo "<option value=\"{$i}\"";
+              if($subject["position"] == $i) {
+                echo " selected";
+              }
+              echo ">{$i}</option>";
+            }
+          ?>
           </select>
         </dd>
       </dl>
